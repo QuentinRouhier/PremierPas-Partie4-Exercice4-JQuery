@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>exercice 4</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <p>Nom</p>
+  <label for="nom"></label><input type="text" name="nom" value="" id="nom" />
+  <p>Prenom</p>
+  <label for="nom"></label><input type="text" name="prenom" value="" id="prenom" />
+  <p>Date de naissance</p>
+  <label for="nom"></label><input type="text" name="dateDeNaissance" value="" id="dateDeNaissance" />
+  <p>Lieu de naissance</p>
+  <label for="nom"></label><input type="text" name="lieuDeNaissance" value="" id="lieuDeNaissance" />
+  <p>Emploi</p>
+  <label for="nom"></label><input type="text" name="emploi" value="" id="emploi" />
+  <p>Société</p>
+  <label for="nom"></label><input type="text" name="société" value="" id="societe" />
+  <button type="button" name="button" id="button">Générer</button>
+  <p id="resultat"></p>
+  <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous">
+  </script>
+  <script>
+  $('#button').click(function() {
+    var ok = true;
+    var nom = $('#nom').val();
+    var prenom = $('#prenom').val();
+    var dateDeNaissance = $('#dateDeNaissance').val();
+    var naissance = $('#lieuDeNaissance').val();
+    var emploi = $('#emploi').val();
+    var societe = $('#societe').val();
+
+    var nameRejex = /^[^.,\/#!?$%\^&\*;:{}=\-_`~()][a-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]*(-)?[a-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]+$/i
+      if (nameRejex.test(nom)){
+        $('#nom').css('borderColor', ('green'));
+      } else {
+        $('#nom').css('borderColor', ('red'));
+        ok = false;
+      }
+      if (nameRejex.test(prenom)){
+        $('#prenom').css('borderColor', ('green'));
+      } else {
+        $('#prenom').css('borderColor', ('red'));
+        ok = false;
+      }
+      if (/^([0][1-9]|[1-2][0-9]|[3][0-1])(\/){1}([0][1-9]|[1][0-2])(\/){1}[1-2][(0|9)][0-9]{2}/.test(dateDeNaissance)){
+        $('#dateDeNaissance').css('borderColor', ('green'));
+      } else {
+        $('#dateDeNaissance').css('borderColor', ('red'));
+        ok = false;
+      }
+      if (nameRejex.test(naissance)){
+        $('#lieuDeNaissance').css('borderColor', ('green'));
+      } else {
+        $('#lieuDeNaissance').css('borderColor', ('red'));
+        ok = false;
+      }
+      if (nameRejex.test(emploi)){
+        $('#emploi').css('borderColor', ('green'));
+      } else {
+        $('#emploi').css('borderColor', ('red'));
+        ok = false;
+      }
+      if (societe){
+        $('#societe').css('borderColor', ('green'));
+      } else {
+        $('#societe').css('borderColor', ('red'));
+        ok = false;
+      }
+      if (ok){
+        $('#resultat').text(nom +' ' + prenom + ', né le ' + dateDeNaissance + ' à ' + naissance + ' actuellement ' + emploi + ' à ' + societe);
+      }
+  });
+  </script>
+</body>
+</html>
